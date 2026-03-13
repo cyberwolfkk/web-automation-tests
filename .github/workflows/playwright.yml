@@ -1,10 +1,5 @@
 name: Web Automation Tests
 
-on:
-  schedule:
-    - cron: "*/5 * * * *"
-  workflow_dispatch:
-
 jobs:
   test:
     runs-on: ubuntu-latest
