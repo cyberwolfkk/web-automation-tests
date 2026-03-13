@@ -4,7 +4,12 @@ test('my flow', async ({ page }) => {
 
   // 1. Open page
   await page.goto('https://leofame.com/free-instagram-views');
-
+const title = page.locator('h1.title-name');
+  if (await title.count() > 0) {
+  console.log("Title found");
+}else{
+     console.log("Title not found");
+  }
   const input = page.locator('input[name="free_link"]');
 try {
   await page.waitForSelector('input[name="free_link"]', { timeout: 5000 });
