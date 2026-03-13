@@ -3,7 +3,8 @@ const { test, expect } = require('@playwright/test');
 test('my flow', async ({ page }) => {
 
   // 1. Open page
-  await page.goto('https://leofame.com/free-instagram-views');
+ await page.goto('https://leofame.com/free-instagram-views');
+await page.waitForLoadState('networkidle');
 const title = page.locator('h1.title-name');
   if (await title.count() > 0) {
   console.log("Title found");
