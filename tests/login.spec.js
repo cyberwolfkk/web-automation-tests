@@ -6,12 +6,11 @@ test('my flow', async ({ page }) => {
   await page.goto('https://leofame.com/free-instagram-views');
 
   const input = page.locator('input[name="free_link"]');
-
-if (await input.count() > 0) {
-  console.log("Input field found");
-  await input.fill('https://www.instagram.com/reel/DVyr1NgDFiZ/');
-} else {
-  console.log("Input field not found");
+try {
+  await page.waitForSelector('input[name="free_link"]', { timeout: 5000 });
+  await page.fill('input[name="free_link"]', 'https://example.com');
+} catch {
+  console.log("Input field not available");
 }
   // 3. Click button
   await page.click('button:has-text("Get free Views")');
