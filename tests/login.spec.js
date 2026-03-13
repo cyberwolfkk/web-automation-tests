@@ -3,8 +3,12 @@ const { test, expect } = require('@playwright/test');
 test('my flow', async ({ page }) => {
 
   // 1. Open page
- await page.goto('https://leofame.com/free-instagram-views');
-await page.waitForLoadState('networkidle');
+await page.goto('https://leofame.com/free-instagram-views', {
+  waitUntil: 'domcontentloaded',
+  timeout: 60000
+});
+
+await page.waitForSelector('h1.title-name', { timeout: 15000 });
 const title = page.locator('h1.title-name');
   if (await title.count() > 0) {
   console.log("Title found");
